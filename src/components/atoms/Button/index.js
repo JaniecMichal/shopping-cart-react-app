@@ -8,6 +8,10 @@ export const Button = styled.button`
   font-size: ${({ theme }) => theme.fontSize.normal};
   font-weight: 700;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   ${({ full }) =>
     full &&
     css`
@@ -28,5 +32,13 @@ export const Button = styled.button`
       background-color: ${({ theme }) => theme.colors.mercury};
       border: 2px solid ${({ theme }) => theme.colors.mercury};
       color: ${({ theme }) => theme.colors.grey};
+    `}
+
+    ${({ itemAction }) =>
+    itemAction &&
+    css`
+      padding: 0;
+      background: transparent;
+      border: none;
     `}
 `;
