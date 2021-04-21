@@ -6,10 +6,27 @@ export const Button = styled.button`
   border-color: ${({ theme }) => theme.colors.buttonBackground};
   color: ${({ theme }) => theme.colors.buttonText};
   font-size: ${({ theme }) => theme.fontSize.normal};
+  font-weight: 700;
 
   ${({ full }) =>
     full &&
     css`
       width: 100%;
+    `}
+
+  ${({ productsCart }) =>
+    productsCart &&
+    css`
+      align-self: flex-end;
+    `}
+
+    ${({ quantity }) =>
+    quantity &&
+    css`
+      width: 30px;
+      padding: 8px;
+      background-color: ${({ theme }) => theme.colors.mercury};
+      border: 2px solid ${({ theme }) => theme.colors.mercury};
+      color: ${({ theme }) => theme.colors.grey};
     `}
 `;

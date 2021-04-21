@@ -1,9 +1,19 @@
 import styled, { css } from 'styled-components';
 
 export const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-weight: 700;
+
+  ${({ shipping }) =>
+    shipping &&
+    css`
+      padding: 10px 20px;
+      border: 2px solid ${({ theme }) => theme.colors.grey};
+      background-color: ${({ theme }) => theme.colors.mercury};
+    `}
 
   ${({ totals }) =>
     totals &&

@@ -13,6 +13,7 @@ export const theme = {
     grey: '#8B8C89',
     mercury: '#E5E5E5',
     alabaster: '#FAFAFA',
+    scoripion: '#5E5E5E',
   },
   media: {
     smallMobile: '340px',

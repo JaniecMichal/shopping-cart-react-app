@@ -2,9 +2,10 @@ import styled from 'styled-components';
 
 export const TotalsWrapper = styled.section`
   margin-top: 20px;
-  max-width: 100%;
+  width: 100%;
   background-color: ${({ theme }) => theme.colors.mercury};
   border: 2px solid ${({ theme }) => theme.colors.grey};
+  font-weight: 700;
 `;
 
 export const StyledHeader = styled.header`

@@ -5,6 +5,7 @@ import { Button } from 'components/atoms/Button';
 import { Section } from 'components/atoms/Section';
 import CostDetails from 'components/atoms/CostDetails';
 import Totals from 'components/molecules/Totals';
+import ProductsCart from 'components/organisms/ProductsCart';
 
 function App() {
   return (
@@ -13,10 +14,13 @@ function App() {
         <MainHeader>Shopping Cart</MainHeader>
         <Button>Proceed to checkout</Button>
       </Section>
-      <div>
-        <CostDetails costName={'shipping'} costValue={'$23.80'} />
-        <Totals />
-      </div>
+      <Section details>
+        <ProductsCart />
+        <Section costs>
+          <CostDetails shipping costName={'shipping'} costValue={'$23.80'} />
+          <Totals />
+        </Section>
+      </Section>
     </MainWrapper>
   );
 }
