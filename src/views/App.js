@@ -18,9 +18,11 @@ function App() {
     if (subTotal > 100) {
       setShippingCost(0);
       setGrandTotal(subTotal);
+      return;
     }
-    return;
-  }, [subTotal]);
+    setShippingCost(23.8);
+    setGrandTotal(subTotal + shippingCost);
+  }, [subTotal, shippingCost]);
 
   return (
     <MainWrapper>
