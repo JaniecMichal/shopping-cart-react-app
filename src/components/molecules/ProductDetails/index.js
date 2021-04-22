@@ -8,8 +8,6 @@ import { Button } from 'components/atoms/Button';
 
 const ProductDetails = ({ product, productsDetails }) => {
   const loading = useSelector(selectLoading);
-  console.log(product);
-  console.log(productsDetails);
 
   if (!loading && !!productsDetails) {
     return (
