@@ -12,7 +12,7 @@ const ProductDetails = ({ product, productsDetails, updateSubTotal }) => {
 
   const removeHandle = () => {
     dispatch(removeProduct(product.productId));
-    dispatch(setSubTotal(0));
+    if (!product) dispatch(setSubTotal(0));
   };
 
   if (!loading && !!productsDetails) {
