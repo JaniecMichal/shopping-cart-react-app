@@ -10,6 +10,7 @@ import {
   fetchProductsData,
   selectProductsCart,
   selectProductsData,
+  setSubTotal,
 } from 'views/productsSlice';
 
 const ProductsCart = () => {
@@ -21,6 +22,24 @@ const ProductsCart = () => {
     dispatch(fetchProductsCart());
     dispatch(fetchProductsData());
   }, [dispatch]);
+
+  const calculateSubTotal = () => {
+    const productToSum = productsCart.map((product) => {
+      const selectedProductDetails = productsData.find(
+        ({ id }) => id === product.productId
+      );
+      return product.quantity * selectedProductDetails.price;
+    });
+    const totalSum = productToSum.reduce(function (a, b) {
+      return a + b;
+    });
+    return totalSum;
+  };
+
+  const updateSubTotal = () => {
+    const sum = calculateSubTotal();
+    dispatch(setSubTotal(sum));
+  };
 
   return (
     <Section productsCart>
@@ -40,7 +59,9 @@ const ProductsCart = () => {
             );
           })}
       </ProductsListWrapper>
-      <Button productsCart>Update Shopping Cart</Button>
+      <Button productsCart onClick={() => updateSubTotal()}>
+        Update Shopping Cart
+      </Button>
     </Section>
   );
 };
