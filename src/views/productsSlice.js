@@ -5,6 +5,7 @@ const productsSlice = createSlice({
   initialState: {
     productsData: [],
     productsCart: [],
+    subTotal: 0,
     loading: null,
   },
   reducers: {
@@ -19,6 +20,9 @@ const productsSlice = createSlice({
         (product) => product.id === action.payload
       );
       state.productsCart.splice(index, 1);
+    },
+    setSubTotal: (state, { payload }) => {
+      state.subTotal = payload;
     },
     fetchProductsData: () => {},
     fetchProductsCart: () => {},
@@ -35,6 +39,7 @@ export const {
   setProductsData,
   setProductsCart,
   removeProduct,
+  setSubTotal,
   fetchProductsData,
   fetchProductsCart,
   setLoading,
@@ -48,5 +53,6 @@ export const selectProductsCart = (state) =>
 export const selectProductsData = (state) =>
   selectProductsState(state).productsData;
 export const selectLoading = (state) => selectProductsState(state).loading;
+export const selectSubTotal = (state) => selectProductsState(state).subTotal;
 
 export default productsSlice.reducer;
