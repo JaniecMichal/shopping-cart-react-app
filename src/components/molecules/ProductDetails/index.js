@@ -3,20 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import removeIcon from 'assets/images/removeIcon.png';
 import { Detail, Wrapper } from './styled';
 import Quantity from 'components/atoms/Quantity';
-import { removeProduct, selectLoading } from 'views/productsSlice';
+import { removeProduct, selectLoading, setSubTotal } from 'views/productsSlice';
 import { Button } from 'components/atoms/Button';
 
 const ProductDetails = ({ product, productsDetails, updateSubTotal }) => {
   const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
 
+  const removeHandle = () => {
+    dispatch(removeProduct(product.productId));
+    dispatch(setSubTotal(0));
+  };
+
   if (!loading && !!productsDetails) {
     return (
       <Wrapper>
-        <Button
-          itemAction
-          onClick={() => dispatch(removeProduct(product.productId))}
-        >
+        <Button itemAction onClick={() => removeHandle()}>
           <img src={removeIcon} alt="removeIcon" />
         </Button>
 
