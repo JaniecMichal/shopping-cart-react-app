@@ -15,14 +15,26 @@ const productsSlice = createSlice({
     setProductsCart: (state, { payload }) => {
       state.productsCart = [...payload];
     },
-    removeProduct: (state, action) => {
+    decreaseQuantity: (state, { payload }) => {
       const index = state.productsCart.findIndex(
-        (product) => product.id === action.payload
+        (product) => product.productId === payload
       );
-      state.productsCart.splice(index, 1);
+      state.productsCart[index].quantity = --state.productsCart[index].quantity;
+    },
+    increaseQuantity: (state, { payload }) => {
+      const index = state.productsCart.findIndex(
+        (product) => product.productId === payload
+      );
+      state.productsCart[index].quantity = ++state.productsCart[index].quantity;
     },
     setSubTotal: (state, { payload }) => {
       state.subTotal = payload;
+    },
+    removeProduct: (state, { payload }) => {
+      const index = state.productsCart.findIndex(
+        (product) => product.productId === payload
+      );
+      state.productsCart.splice(index, 1);
     },
     fetchProductsData: () => {},
     fetchProductsCart: () => {},
@@ -38,6 +50,8 @@ const productsSlice = createSlice({
 export const {
   setProductsData,
   setProductsCart,
+  decreaseQuantity,
+  increaseQuantity,
   removeProduct,
   setSubTotal,
   fetchProductsData,
