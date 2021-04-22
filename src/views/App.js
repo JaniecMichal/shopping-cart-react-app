@@ -7,14 +7,20 @@ import { Section } from 'components/atoms/Section';
 import CostDetails from 'components/atoms/CostDetails';
 import Totals from 'components/molecules/Totals';
 import ProductsCart from 'components/organisms/ProductsCart';
-import { selectSubTotal } from './productsSlice';
+import { selectProductsCart, selectSubTotal } from './productsSlice';
 
 function App() {
   const subTotal = useSelector(selectSubTotal);
+  const productsCart = useSelector(selectProductsCart);
   const [shippingCost, setShippingCost] = useState(23.8);
   const [grandTotal, setGrandTotal] = useState(subTotal + shippingCost);
 
   useEffect(() => {
+    if (productsCart.length < 1) {
+      setShippingCost(0);
+      setGrandTotal(0);
+      return;
+    }
     if (subTotal > 100) {
       setShippingCost(0);
       setGrandTotal(subTotal);
@@ -22,7 +28,7 @@ function App() {
     }
     setShippingCost(23.8);
     setGrandTotal(subTotal + shippingCost);
-  }, [subTotal, shippingCost]);
+  }, [subTotal, shippingCost, productsCart]);
 
   return (
     <MainWrapper>
