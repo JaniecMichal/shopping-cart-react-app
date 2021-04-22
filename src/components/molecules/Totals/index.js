@@ -3,17 +3,17 @@ import CostDetails from 'components/atoms/CostDetails';
 import { DetailsWrapper, StyledHeader, Title, TotalsWrapper } from './styled';
 import { Button } from 'components/atoms/Button';
 
-const Totals = () => {
+const Totals = ({ subTotal, grandTotal }) => {
   return (
     <TotalsWrapper>
       <StyledHeader>
         <Title>Cart totals</Title>
       </StyledHeader>
       <DetailsWrapper>
-        <CostDetails costName={'subtotal'} costValue={'$23.80'} totals={true} />
+        <CostDetails costName={'subtotal'} costValue={subTotal} totals={true} />
         <CostDetails
           costName={'grand total'}
-          costValue={'$23.80'}
+          costValue={grandTotal}
           totals
           last
         />
