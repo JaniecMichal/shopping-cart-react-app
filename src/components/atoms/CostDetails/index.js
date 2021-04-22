@@ -7,7 +7,7 @@ const CostDetails = ({ costName, costValue, totals, last, shipping }) => {
       <Caption isUppercased={costName === 'shipping' ? true : false}>
         {costName}
       </Caption>
-      <Value>{costValue}</Value>
+      <Value>${!!costValue ? costValue.toFixed(2) : (0).toFixed(2)}</Value>
     </Wrapper>
   );
 };
