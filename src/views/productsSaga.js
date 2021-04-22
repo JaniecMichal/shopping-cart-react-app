@@ -23,14 +23,12 @@ function* fetchProductsDataHandler() {
 
 function* fetchQuantityDataHandler() {
   try {
-    yield put(setLoading());
     const path = '/cartProducts.json';
     const productInCart = yield call(getData, path);
     yield put(setProductsCart(productInCart));
   } catch (error) {
     yield call(alert, 'Coś poszło nie tak!');
   }
-  yield put(setOffLoading());
 }
 
 export function* watchProductsAction() {
