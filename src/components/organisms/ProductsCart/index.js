@@ -41,27 +41,35 @@ const ProductsCart = () => {
     dispatch(setSubTotal(sum));
   };
 
+  if (productsCart.length > 0) {
+    return (
+      <Section productsCart>
+        <ProductsListWrapper>
+          <Categories />
+          {!!productsCart.length &&
+            productsCart.map((product) => {
+              const selectedProductDetails = productsData.find(
+                ({ id }) => id === product.productId
+              );
+              return (
+                <ProductDetails
+                  key={product.productId}
+                  product={product}
+                  productsDetails={selectedProductDetails}
+                  updateSubTotal={updateSubTotal}
+                />
+              );
+            })}
+        </ProductsListWrapper>
+        <Button productsCart onClick={() => updateSubTotal()}>
+          Update Shopping Cart
+        </Button>
+      </Section>
+    );
+  }
   return (
     <Section productsCart>
-      <ProductsListWrapper>
-        <Categories />
-        {!!productsCart.length &&
-          productsCart.map((product) => {
-            const selectedProductDetails = productsData.find(
-              ({ id }) => id === product.productId
-            );
-            return (
-              <ProductDetails
-                key={product.productId}
-                product={product}
-                productsDetails={selectedProductDetails}
-              />
-            );
-          })}
-      </ProductsListWrapper>
-      <Button productsCart onClick={() => updateSubTotal()}>
-        Update Shopping Cart
-      </Button>
+      <h1>Shopping cart is empty 😥</h1>
     </Section>
   );
 };
