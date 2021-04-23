@@ -4,9 +4,9 @@ import { CategoriesWrapper, Category } from './styled';
 const Categories = () => {
   return (
     <CategoriesWrapper>
-      <Category>Product Name</Category>
-      <Category>Unit Price</Category>
-      <Category>Qty</Category>
+      <Category name={'name'}>Product Name</Category>
+      <Category unitPrice={'unitPrice'}>Unit Price</Category>
+      <Category quantity={'quantity'}>Qty</Category>
     </CategoriesWrapper>
   );
 };

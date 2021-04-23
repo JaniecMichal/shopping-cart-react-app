@@ -37,6 +37,7 @@ export const Button = styled.button`
     ${({ itemAction }) =>
     itemAction &&
     css`
+      max-width: 50px;
       padding: 0;
       background: transparent;
       border: none;
