@@ -42,4 +42,10 @@ export const Button = styled.button`
       background: transparent;
       border: none;
     `}
+
+    ${({ isConfirmed }) =>
+    isConfirmed &&
+    css`
+      display: none;
+    `}
 `;
