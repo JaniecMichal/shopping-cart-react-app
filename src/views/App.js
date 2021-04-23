@@ -13,11 +13,16 @@ function App() {
   const subTotal = useSelector(selectSubTotal);
   const productsCart = useSelector(selectProductsCart);
   const [shippingCost, setShippingCost] = useState(23.8);
-  const [grandTotal, setGrandTotal] = useState(subTotal + shippingCost);
+  const [grandTotal, setGrandTotal] = useState();
 
   useEffect(() => {
     if (productsCart.length < 1) {
       setShippingCost(0);
+      setGrandTotal(0);
+      return;
+    }
+    if (subTotal === 0) {
+      setShippingCost(23.8);
       setGrandTotal(0);
       return;
     }
