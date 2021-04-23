@@ -9,5 +9,11 @@ export const ConfirmationInfo = styled.h2`
     isConfirmed &&
     css`
       display: inherit;
+
+      ${({ emptyOrLow }) =>
+        emptyOrLow &&
+        css`
+          color: ${({ theme }) => theme.colors.crimson};
+        `}
     `}
 `;

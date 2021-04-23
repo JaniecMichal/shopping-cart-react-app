@@ -63,12 +63,21 @@ function App() {
                 costName={'shipping'}
                 costValue={shippingCost}
               />
-              <Totals subTotal={subTotal} grandTotal={grandTotal} />
+              <Totals
+                subTotal={subTotal}
+                grandTotal={grandTotal}
+                orderSubmitHandler={orderSubmitHandler}
+              />
             </Section>
           </>
         )}
-        <ConfirmationInfo isConfirmed={orderIsConfirmed}>
-          Your order has been submitted successfully
+        <ConfirmationInfo
+          isConfirmed={orderIsConfirmed}
+          emptyOrLow={subTotal === 0 ? true : false}
+        >
+          {subTotal === 0
+            ? 'You have empty shopping cart or your subtotal is too low'
+            : ' Your order has been submitted successfully'}
         </ConfirmationInfo>
       </Section>
     </MainWrapper>

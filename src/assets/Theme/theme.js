@@ -15,11 +15,10 @@ export const theme = {
     alabaster: '#FAFAFA',
     scoripion: '#5E5E5E',
     apple: '#33CC33',
+    crimson: '#dc143c',
   },
   media: {
-    smallMobile: '340px',
     mobile: '767.98px',
     tablet: '991.98px',
-    desktop: '1199.98px',
   },
 };

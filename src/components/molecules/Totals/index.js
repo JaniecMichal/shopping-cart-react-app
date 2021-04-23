@@ -3,7 +3,7 @@ import CostDetails from 'components/atoms/CostDetails';
 import { DetailsWrapper, StyledHeader, Title, TotalsWrapper } from './styled';
 import { Button } from 'components/atoms/Button';
 
-const Totals = ({ subTotal, grandTotal }) => {
+const Totals = ({ subTotal, grandTotal, orderSubmitHandler }) => {
   return (
     <TotalsWrapper>
       <StyledHeader>
@@ -17,7 +17,9 @@ const Totals = ({ subTotal, grandTotal }) => {
           totals
           last
         />
-        <Button full>Proceed to checkout</Button>
+        <Button full onClick={() => orderSubmitHandler()}>
+          Proceed to checkout
+        </Button>
       </DetailsWrapper>
     </TotalsWrapper>
   );
