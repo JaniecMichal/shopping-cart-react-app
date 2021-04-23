@@ -32,5 +32,9 @@ export const Section = styled.section`
       grid-template-columns: 2fr 1fr;
       grid-gap: 20px;
       align-items: center;
+
+      @media (max-width: ${({ theme }) => theme.media.tablet}) {
+        grid-template-columns: 1fr;
+      }
     `}
 `;
