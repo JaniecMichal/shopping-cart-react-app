@@ -8,9 +8,11 @@ import CostDetails from 'components/atoms/CostDetails';
 import Totals from 'components/molecules/Totals';
 import ProductsCart from 'components/organisms/ProductsCart';
 import { selectProductsCart, selectSubTotal } from './productsSlice';
+import { ConfirmationInfo } from 'components/atoms/ConfirmationInfo';
 
 function App() {
   const subTotal = useSelector(selectSubTotal);
+  const [orderIsConfirmed, setOrderIsConfirmed] = useState(false);
   const productsCart = useSelector(selectProductsCart);
   const [shippingCost, setShippingCost] = useState(23.8);
   const [grandTotal, setGrandTotal] = useState();
@@ -35,22 +37,39 @@ function App() {
     setGrandTotal(subTotal + shippingCost);
   }, [subTotal, shippingCost, productsCart]);
 
+  const orderSubmitHandler = () => {
+    console.log(orderIsConfirmed);
+    setOrderIsConfirmed(!orderIsConfirmed);
+  };
+
   return (
     <MainWrapper>
       <Section>
         <MainHeader>Shopping Cart</MainHeader>
-        <Button>Proceed to checkout</Button>
+        <Button
+          onClick={() => orderSubmitHandler()}
+          isConfirmed={orderIsConfirmed}
+        >
+          Proceed to checkout
+        </Button>
       </Section>
       <Section details>
-        <ProductsCart />
-        <Section costs>
-          <CostDetails
-            shipping
-            costName={'shipping'}
-            costValue={shippingCost}
-          />
-          <Totals subTotal={subTotal} grandTotal={grandTotal} />
-        </Section>
+        {!orderIsConfirmed && (
+          <>
+            <ProductsCart />
+            <Section costs>
+              <CostDetails
+                shipping
+                costName={'shipping'}
+                costValue={shippingCost}
+              />
+              <Totals subTotal={subTotal} grandTotal={grandTotal} />
+            </Section>
+          </>
+        )}
+        <ConfirmationInfo isConfirmed={orderIsConfirmed}>
+          Your order has been submitted successfully
+        </ConfirmationInfo>
       </Section>
     </MainWrapper>
   );
