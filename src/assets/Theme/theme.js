@@ -14,6 +14,7 @@ export const theme = {
     mercury: '#E5E5E5',
     alabaster: '#FAFAFA',
     scoripion: '#5E5E5E',
+    apple: '#33CC33',
   },
   media: {
     smallMobile: '340px',
